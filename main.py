@@ -42,35 +42,32 @@ try:
         EC.element_to_be_clickable((By.CSS_SELECTOR, "#regiao"))
     )
 
-    # Iterar de option 3 até option 7
-    for i in range(3, 8):
-        option = regiao_select.find_element(By.CSS_SELECTOR, f"option.ng-star-inserted:nth-child({i})")
-        option.click()
-        
-        time.sleep(10)  # Aguarde alguns segundos para garantir que a página carregue completamente
+    option = regiao_select.find_element(By.CSS_SELECTOR, f"option.ng-star-inserted:nth-child(6)") #Sudeste
+    option.click()
+    
+    time.sleep(5)  # Aguarde alguns segundos para garantir que a página carregue completamente
 
-        # Iterar através dos estados usando a estrutura fornecida
-        for j in range(75, 94, 2):  # Ajuste conforme necessário para cobrir todos os estados
-            estado_selector = f"span.ng-tns-c21-{i}:nth-child(2)"
-            estado = WebDriverWait(driver, 5).until(
-                EC.element_to_be_clickable((By.CSS_SELECTOR, estado_selector))
-            )
-            estado.click()
-            
-            # Clicar no botão "Candidaturas" baseado no texto interno
-            candidatura_button = WebDriverWait(driver, 5).until(
-                EC.element_to_be_clickable((By.XPATH, "//button[contains(., 'Candidaturas')]"))
-            )
-            candidatura_button.click()
-            
-            time.sleep(10)  # Aguarde alguns segundos para garantir que a página carregue completamente
-            
-            # Fazer a busca de palavra chave após selecionar a opção
-            page_text = driver.find_element(By.TAG_NAME, 'body').text
-            word_count = page_text.lower().count("moeda social")
+    # Iterar através dos estados usando a estrutura fornecida
+    estado_selector = f"span.ng-tns-c21-{127}:nth-child(2)"
+    estado = WebDriverWait(driver, 5).until(
+        EC.element_to_be_clickable((By.CSS_SELECTOR, estado_selector))
+    )
+    estado.click()
+    
+    # Clicar no botão "Candidaturas" baseado no texto interno
+    candidatura_button = WebDriverWait(driver, 5).until(
+        EC.element_to_be_clickable((By.XPATH, "//button[contains(., 'Candidaturas')]"))
+    )
+    candidatura_button.click()
+    
+    time.sleep(10)  # Aguarde alguns segundos para garantir que a página carregue completamente
+    
+    # Fazer a busca de palavra chave após selecionar a opção
+    page_text = driver.find_element(By.TAG_NAME, 'body').text
+    word_count = page_text.lower().count("moeda social")
 
-            # Printar a quantidade de ocorrências da palavra 'moeda social' para cada estado
-            print(f"Quantidade de ocorrências da palavra 'moeda social' no estado {j}: {word_count}")
+    # Printar a quantidade de ocorrências da palavra 'moeda social' para cada estado
+    print(f"Quantidade de ocorrências da palavra 'moeda social' no estado Rio de Janeiro: {word_count}")
 
 finally:
     # Fechar o navegador
