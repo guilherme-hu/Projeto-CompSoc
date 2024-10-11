@@ -50,18 +50,16 @@ try:
         time.sleep(10)  # Aguarde alguns segundos para garantir que a página carregue completamente
 
         # Iterar através dos estados usando a estrutura fornecida
-        for j in range(17, 54, 2):  # Ajuste conforme necessário para cobrir todos os estados
-            estado_selector = f"span.ng-tns-c21-{j}:nth-child(2)"
-            estado = WebDriverWait(driver, 10).until(
+        for j in range(75, 94, 2):  # Ajuste conforme necessário para cobrir todos os estados
+            estado_selector = f"span.ng-tns-c21-{i}:nth-child(2)"
+            estado = WebDriverWait(driver, 5).until(
                 EC.element_to_be_clickable((By.CSS_SELECTOR, estado_selector))
             )
             estado.click()
             
-            time.sleep(10)  # Aguarde alguns segundos para garantir que a página carregue completamente
-            
-            # Clicar no botão "candidatura"
-            candidatura_button = WebDriverWait(driver, 10).until(
-                EC.element_to_be_clickable((By.CSS_SELECTOR, "#cdk-accordion-child-24 > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > dvg-regiao-cargo:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > button:nth-child(1)"))
+            # Clicar no botão "Candidaturas" baseado no texto interno
+            candidatura_button = WebDriverWait(driver, 5).until(
+                EC.element_to_be_clickable((By.XPATH, "//button[contains(., 'Candidaturas')]"))
             )
             candidatura_button.click()
             
