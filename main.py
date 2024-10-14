@@ -48,26 +48,71 @@ try:
     time.sleep(5)  # Aguarde alguns segundos para garantir que a página carregue completamente
 
     # Iterar através dos estados usando a estrutura fornecida
-    estado_selector = f"span.ng-tns-c21-{127}:nth-child(2)"
     estado = WebDriverWait(driver, 5).until(
-        EC.element_to_be_clickable((By.CSS_SELECTOR, estado_selector))
+        EC.element_to_be_clickable((By.CSS_SELECTOR, f"span.ng-tns-c21-{7}:nth-child(2)" )) #Rio de Janeiro
     )
     estado.click()
     
-    # Clicar no botão "Candidaturas" baseado no texto interno
+    # Verifique se o elemento está clicável
     candidatura_button = WebDriverWait(driver, 5).until(
-        EC.element_to_be_clickable((By.XPATH, "//button[contains(., 'Candidaturas')]"))
+        EC.element_to_be_clickable((By.XPATH, "/html/body/dvg-root/main/dvg-regiao/dvg-regiao-estados/div/div/div/form/div/div[2]/div/div/mat-accordion/mat-expansion-panel[3]/div/div/div/div[1]/dvg-regiao-cargo/div/div/div[2]/div/div/div/button[1]/i"))
     )
+    # Clique no elemento
     candidatura_button.click()
-    
-    time.sleep(10)  # Aguarde alguns segundos para garantir que a página carregue completamente
-    
-    # Fazer a busca de palavra chave após selecionar a opção
-    page_text = driver.find_element(By.TAG_NAME, 'body').text
-    word_count = page_text.lower().count("moeda social")
 
-    # Printar a quantidade de ocorrências da palavra 'moeda social' para cada estado
-    print(f"Quantidade de ocorrências da palavra 'moeda social' no estado Rio de Janeiro: {word_count}")
+    municipio_button = WebDriverWait(driver, 5).until(
+        EC.element_to_be_clickable((By.XPATH, """//*[@id="codigoMunicipio"]"""))
+    )
+    # Clique no elemento
+    municipio_button.click()
+
+    municipio_button = WebDriverWait(driver, 5).until(
+        EC.element_to_be_clickable((By.XPATH, """//*[@id="codigoMunicipio"]"""))
+    )
+    # Clique no elemento
+    municipio_button.click()
+
+
+    for i in range(2, 94):
+        # Construa o XPath dinamicamente
+        xpath = f"/html/body/dvg-root/main/dvg-canditado-listagem/div/div/div[1]/form/div[1]/div/div[2]/div[1]/div[2]/select/option[{i}]"
+        
+        opcao = WebDriverWait(driver, 5).until(
+            EC.element_to_be_clickable((By.XPATH, xpath))
+        )
+        opcao.click()
+
+        prefeito = WebDriverWait(driver, 5).until(
+            EC.element_to_be_clickable((By.XPATH, "/html/body/dvg-root/main/dvg-canditado-listagem/div/div/div[1]/form/div[1]/div/div[2]/div[2]/div[2]/select/option[2]"))
+        )
+        prefeito.click()
+        
+        pesquisar = WebDriverWait(driver, 5).until(
+            EC.element_to_be_clickable((By.XPATH, "/html/body/dvg-root/main/dvg-canditado-listagem/div/div/div[1]/form/div[1]/div/div[3]/button[1]"))
+        )
+        pesquisar.click()
+
+        # Pegue o número ao lado da frase "Total de registros"
+        numero_element = WebDriverWait(driver, 5).until(
+            EC.presence_of_element_located((By.XPATH, "/html/body/dvg-root/main/dvg-canditado-listagem/div/div/div[2]/div/div/div/div/div[1]/div[1]/div[1]/label/following-sibling::span[1]"))
+        )
+
+        # Pegue o texto do número
+        numero = numero_element.text
+
+        print(numero)
+
+        for j in range(1, numero+1):
+            nome = WebDriverWait(driver, 5).until(
+                EC.element_to_be_clickable((By.XPATH, "/html/body/dvg-root/main/dvg-canditado-listagem/div/div/div[2]/div/div/div/div/div[2]/div[{j}]/div/div/div"))
+            )
+            nome.click()
+
+            # Faça o que você precisa depois de clicar no elemento
+            # Por exemplo, você pode contar a quantidade de ocorrências de 'moeda social'
+            page_text = driver.find_element(By.TAG_NAME, 'body').text
+            word_count = page_text.lower().count("moeda social")
+            print(f"Quantidade de ocorrências da palavra 'moeda social' na opção [{i}]: {word_count}")
 
 finally:
     # Fechar o navegador
