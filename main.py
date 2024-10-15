@@ -3,12 +3,35 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.chrome.options import Options
+import PyPDF2
+import os
 import time
 import pandas as pd
 
-# Configuração do driver (certifique-se de ter o chromedriver instalado e no PATH)
-driver = webdriver.Chrome()
 
+# Configurações do Chrome
+chrome_options = Options()
+download_dir = "/path/to/download"  # Defina o diretório de download desejado
+
+# Adiciona as preferências para configurar o download
+prefs = {
+    "download.default_directory": download_dir,
+    "profile.default_content_settings.popups": 0,
+    "download.prompt_for_download": False,
+}
+
+chrome_options.add_experimental_option("prefs", prefs)
+driver = webdriver.Chrome(options=chrome_options)
+
+
+# Function to find the newest file in the download directory
+def find_newest_file(directory):
+    files = os.listdir(directory)
+    paths = [os.path.join(directory, basename) for basename in files]
+    return max(paths, key=os.path.getctime)
+
+    
 try:
     # Abrir o site
     driver.get("https://divulgacandcontas.tse.jus.br/divulga/#/home")
@@ -80,10 +103,11 @@ try:
         )
         municipio.click()
 
-        prefeito = WebDriverWait(driver, 5).until(
-            EC.element_to_be_clickable((By.XPATH, "/html/body/dvg-root/main/dvg-canditado-listagem/div/div/div[1]/form/div[1]/div/div[2]/div[2]/div[2]/select/option[2]"))
-        )
-        prefeito.click()
+        if i == 2:
+            prefeito = WebDriverWait(driver, 5).until(
+                EC.element_to_be_clickable((By.XPATH, "/html/body/dvg-root/main/dvg-canditado-listagem/div/div/div[1]/form/div[1]/div/div[2]/div[2]/div[2]/select/option[2]"))
+            )
+            prefeito.click()
         
         pesquisar = WebDriverWait(driver, 5).until(
             EC.element_to_be_clickable((By.XPATH, "/html/body/dvg-root/main/dvg-canditado-listagem/div/div/div[1]/form/div[1]/div/div[3]/button[1]"))
@@ -91,46 +115,48 @@ try:
         pesquisar.click()
 
 
-        # Localiza todos os elementos que contêm os nomes dos aux
-        aux = driver.find_elements(By.XPATH, "//*[@id='basicInformationSection']/div[2]/div[contains(@class, 'list-group ng-star-inserted')]")
-
-        time.sleep(2)  # Aguarde alguns segundos para garantir que a página carregue completamente
-
-        # Conta o número de aux encontrados
-        numero_de_aux = len(aux)
-
-        print("Número de aux:", numero_de_aux)
-
-        for candidato in aux:
-            try:
-                # Captura o nome do candidato
-                nome_element = candidato.find_element(By.XPATH, ".//span[contains(@class, 'fw-bold')]")
-                nome = nome_element.text
-
-                # Captura a classe de status
-                status_element = candidato.find_element(By.XPATH, ".//div[contains(@class, 'centered badge bg-danger ng-star-inserted')]")
-                status = status_element.text
-
-                print(f"Nome: {nome}, Status: {status}")
-            except Exception as e:
-                print(f"Erro ao processar candidato: {e}")
+        time.sleep(3)  # Aguarde alguns segundos para garantir que a página carregue completamente
 
         # Contar quantos elementos da classe existem dentro da parte especificada
-        elementos = driver.find_elements(By.XPATH, "//*[@id='basicInformationSection']/div[2]/div[contains(@class, 'list-group ng-star-inserted')]")
-        numero_de_elementos = len(elementos)
+        nomes = driver.find_elements(By.XPATH, "//*[@id='basicInformationSection']/div[2]/div[contains(@class, 'list-group ng-star-inserted')]")
+        numero_de_nomes = len(nomes)
 
-        print("Número de elementos na classe especificada:", numero_de_elementos)
-        # for j in range(1, numero_de_nomes+1):
-        #     nome = WebDriverWait(driver, 5).until(
-        #         EC.element_to_be_clickable((By.XPATH, "/html/body/dvg-root/main/dvg-canditado-listagem/div/div/div[2]/div/div/div/div/div[2]/div[{j}]/div/div/div"))
-        #     )
-        #     nome.click()
+        print("Número de candidatos: ", numero_de_nomes)
+        for j in range(1, numero_de_nomes+1):
 
-        #     # Faça o que você precisa depois de clicar no elemento
-        #     # Por exemplo, você pode contar a quantidade de ocorrências de 'moeda social'
-        #     page_text = driver.find_element(By.TAG_NAME, 'body').text
-        #     word_count = page_text.lower().count("moeda social")
-        #     print(f"Quantidade de ocorrências da palavra 'moeda social' na opção [{i}]: {word_count}")
+            candidato = WebDriverWait(driver, 5).until(
+                EC.element_to_be_clickable((By.XPATH, f"""//*[@id="basicInformationSection"]/div[2]/div[{i}]/div/div/div"""))
+            )
+            candidato.click()
+            
+
+            proposta = WebDriverWait(driver, 5).until(
+                EC.element_to_be_clickable((By.XPATH, f"/html/body/dvg-root/main/dvg-canditado-detalhe/div/div/div[2]/form/div/div[2]/div/div/mat-accordion/mat-expansion-panel[4]/mat-expansion-panel-header/span[1]"))
+            )
+            proposta.click() 
+            
+
+            pdf = WebDriverWait(driver, 5).until(
+                EC.element_to_be_clickable((By.XPATH, f"/html/body/dvg-root/main/dvg-canditado-detalhe/div/div/div[2]/form/div/div[2]/div/div/mat-accordion/mat-expansion-panel[4]/div/div/dvg-candidato-proposta/ol/li/div/div"))
+            )
+            pdf.click()
+
+
+            pdf_path = find_newest_file(download_dir)
+
+            # Using PyPDF2 to read the PDF
+            with open(pdf_path, 'rb') as file:
+                reader = PyPDF2.PdfFileReader(file)
+                num_pages = reader.getNumPages()
+                text = ""
+                for page in range(num_pages):
+                    text += reader.getPage(page).extract_text()
+    
+            # Faça o que você precisa depois de clicar no elemento
+            # Por exemplo, você pode contar a quantidade de ocorrências de 'moeda social'
+            page_text = driver.find_element(By.TAG_NAME, 'body').text
+            word_count = page_text.lower().count("moeda social")
+            print(f"Quantidade de ocorrências da palavra 'moeda social' na opção [{i}]: {word_count}")
 
 finally:
     # Fechar o navegador
