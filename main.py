@@ -141,22 +141,23 @@ try:
             )
             pdf.click()
 
+            driver.back()
 
-            pdf_path = find_newest_file(download_dir)
+            # pdf_path = find_newest_file(download_dir)
 
-            # Using PyPDF2 to read the PDF
-            with open(pdf_path, 'rb') as file:
-                reader = PyPDF2.PdfFileReader(file)
-                num_pages = reader.getNumPages()
-                text = ""
-                for page in range(num_pages):
-                    text += reader.getPage(page).extract_text()
+            # # Using PyPDF2 to read the PDF
+            # with open(pdf_path, 'rb') as file:
+            #     reader = PyPDF2.PdfFileReader(file)
+            #     num_pages = reader.getNumPages()
+            #     text = ""
+            #     for page in range(num_pages):
+            #         text += reader.getPage(page).extract_text()
     
-            # Faça o que você precisa depois de clicar no elemento
-            # Por exemplo, você pode contar a quantidade de ocorrências de 'moeda social'
-            page_text = driver.find_element(By.TAG_NAME, 'body').text
-            word_count = page_text.lower().count("moeda social")
-            print(f"Quantidade de ocorrências da palavra 'moeda social' na opção [{i}]: {word_count}")
+            # # Faça o que você precisa depois de clicar no elemento
+            # # Por exemplo, você pode contar a quantidade de ocorrências de 'moeda social'
+            # page_text = driver.find_element(By.TAG_NAME, 'body').text
+            # word_count = page_text.lower().count("moeda social")
+            # print(f"Quantidade de ocorrências da palavra 'moeda social' na opção [{i}]: {word_count}")
 
 finally:
     # Fechar o navegador
