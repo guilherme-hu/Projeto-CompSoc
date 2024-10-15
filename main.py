@@ -90,29 +90,36 @@ try:
         )
         pesquisar.click()
 
-    
-        # Localiza todos os elementos que contêm os nomes dos candidatos
-        candidatos = driver.find_elements(By.XPATH, ".//div[contains(@class, 'list-group ng-star-inserted')]")
+
+        # Localiza todos os elementos que contêm os nomes dos aux
+        aux = driver.find_elements(By.XPATH, "//*[@id='basicInformationSection']/div[2]/div[contains(@class, 'list-group ng-star-inserted')]")
 
         time.sleep(2)  # Aguarde alguns segundos para garantir que a página carregue completamente
 
-        # Conta o número de candidatos encontrados
-        print(candidatos)
-        numero_de_candidatos = len(candidatos)
+        # Conta o número de aux encontrados
+        numero_de_aux = len(aux)
 
-        print("Número de candidatos:", numero_de_candidatos)
+        print("Número de aux:", numero_de_aux)
 
-        for candidato in candidatos:
-            # Captura o nome do candidato
-            nome_element = candidato.find_element(By.XPATH, ".//span[contains(@class, 'fw-bold')]")
-            nome = nome_element.text
+        for candidato in aux:
+            try:
+                # Captura o nome do candidato
+                nome_element = candidato.find_element(By.XPATH, ".//span[contains(@class, 'fw-bold')]")
+                nome = nome_element.text
 
-            # Captura a classe de status
-            status_element = candidato.find_element(By.XPATH, ".//div[contains(@class, 'centered badge bg-danger ng-star-inserted')]")
-            status = status_element.text
+                # Captura a classe de status
+                status_element = candidato.find_element(By.XPATH, ".//div[contains(@class, 'centered badge bg-danger ng-star-inserted')]")
+                status = status_element.text
 
-            print(f"Nome: {nome}, Status: {status}")
+                print(f"Nome: {nome}, Status: {status}")
+            except Exception as e:
+                print(f"Erro ao processar candidato: {e}")
 
+        # Contar quantos elementos da classe existem dentro da parte especificada
+        elementos = driver.find_elements(By.XPATH, "//*[@id='basicInformationSection']/div[2]/div[contains(@class, 'list-group ng-star-inserted')]")
+        numero_de_elementos = len(elementos)
+
+        print("Número de elementos na classe especificada:", numero_de_elementos)
         # for j in range(1, numero_de_nomes+1):
         #     nome = WebDriverWait(driver, 5).until(
         #         EC.element_to_be_clickable((By.XPATH, "/html/body/dvg-root/main/dvg-canditado-listagem/div/div/div[2]/div/div/div/div/div[2]/div[{j}]/div/div/div"))
