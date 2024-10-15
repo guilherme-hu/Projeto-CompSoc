@@ -19,7 +19,7 @@ try:
     )
     menu_button.click()
 
-    # Esperar e clicar em "Eleições"
+    # Esperar e clicar em "Eleições" -> podemos escolher as eleições de anos passados
     eleicoes_link = WebDriverWait(driver, 10).until(
         EC.element_to_be_clickable((By.LINK_TEXT, "Eleições"))
     )
@@ -31,21 +31,22 @@ try:
     )
     eleicoes_municipais_link.click()
 
-    # Esperar e clicar no seletor CSS .row-cols-lg-6 > div:nth-child(1)
+    # Apertar no símbolo de Brasil
     elemento_seletor = WebDriverWait(driver, 10).until(
         EC.element_to_be_clickable((By.CSS_SELECTOR, ".row-cols-lg-6 > div:nth-child(1)"))
     )
     elemento_seletor.click()
 
-    # Esperar e acessar o seletor CSS #regiao
+    # Esperar e acessar o seletor CSS #regiao, com as regiões do Brasil -> possibilidade de escolher outras regiões
     regiao_select = WebDriverWait(driver, 10).until(
         EC.element_to_be_clickable((By.CSS_SELECTOR, "#regiao"))
     )
 
+    # Clique na região Sudeste
     option = regiao_select.find_element(By.CSS_SELECTOR, f"option.ng-star-inserted:nth-child(6)") #Sudeste
     option.click()
     
-    time.sleep(5)  # Aguarde alguns segundos para garantir que a página carregue completamente
+    time.sleep(2)  # Aguarde alguns segundos para garantir que a página carregue completamente
 
     # Iterar através dos estados usando a estrutura fornecida
     estado = WebDriverWait(driver, 5).until(
@@ -53,34 +54,31 @@ try:
     )
     estado.click()
     
-    # Verifique se o elemento está clicável
+    # Apertar no botão "Candidatura"
     candidatura_button = WebDriverWait(driver, 5).until(
         EC.element_to_be_clickable((By.XPATH, "/html/body/dvg-root/main/dvg-regiao/dvg-regiao-estados/div/div/div/form/div/div[2]/div/div/mat-accordion/mat-expansion-panel[3]/div/div/div/div[1]/dvg-regiao-cargo/div/div/div[2]/div/div/div/button[1]/i"))
     )
-    # Clique no elemento
     candidatura_button.click()
 
     municipio_button = WebDriverWait(driver, 5).until(
         EC.element_to_be_clickable((By.XPATH, """//*[@id="codigoMunicipio"]"""))
     )
-    # Clique no elemento
     municipio_button.click()
 
     municipio_button = WebDriverWait(driver, 5).until(
         EC.element_to_be_clickable((By.XPATH, """//*[@id="codigoMunicipio"]"""))
     )
-    # Clique no elemento
     municipio_button.click()
 
-
+    # para todos os municipios do RJ
     for i in range(2, 94):
         # Construa o XPath dinamicamente
         xpath = f"/html/body/dvg-root/main/dvg-canditado-listagem/div/div/div[1]/form/div[1]/div/div[2]/div[1]/div[2]/select/option[{i}]"
         
-        opcao = WebDriverWait(driver, 5).until(
+        municipio = WebDriverWait(driver, 5).until(
             EC.element_to_be_clickable((By.XPATH, xpath))
         )
-        opcao.click()
+        municipio.click()
 
         prefeito = WebDriverWait(driver, 5).until(
             EC.element_to_be_clickable((By.XPATH, "/html/body/dvg-root/main/dvg-canditado-listagem/div/div/div[1]/form/div[1]/div/div[2]/div[2]/div[2]/select/option[2]"))
@@ -92,27 +90,40 @@ try:
         )
         pesquisar.click()
 
-        # Pegue o número ao lado da frase "Total de registros"
-        numero_element = WebDriverWait(driver, 5).until(
-            EC.presence_of_element_located((By.XPATH, "/html/body/dvg-root/main/dvg-canditado-listagem/div/div/div[2]/div/div/div/div/div[1]/div[1]/div[1]/label/following-sibling::span[1]"))
-        )
+    
+        # Localiza todos os elementos que contêm os nomes dos candidatos
+        candidatos = driver.find_elements(By.XPATH, ".//div[contains(@class, 'list-group ng-star-inserted')]")
 
-        # Pegue o texto do número
-        numero = numero_element.text
+        time.sleep(2)  # Aguarde alguns segundos para garantir que a página carregue completamente
 
-        print(numero)
+        # Conta o número de candidatos encontrados
+        print(candidatos)
+        numero_de_candidatos = len(candidatos)
 
-        for j in range(1, numero+1):
-            nome = WebDriverWait(driver, 5).until(
-                EC.element_to_be_clickable((By.XPATH, "/html/body/dvg-root/main/dvg-canditado-listagem/div/div/div[2]/div/div/div/div/div[2]/div[{j}]/div/div/div"))
-            )
-            nome.click()
+        print("Número de candidatos:", numero_de_candidatos)
 
-            # Faça o que você precisa depois de clicar no elemento
-            # Por exemplo, você pode contar a quantidade de ocorrências de 'moeda social'
-            page_text = driver.find_element(By.TAG_NAME, 'body').text
-            word_count = page_text.lower().count("moeda social")
-            print(f"Quantidade de ocorrências da palavra 'moeda social' na opção [{i}]: {word_count}")
+        for candidato in candidatos:
+            # Captura o nome do candidato
+            nome_element = candidato.find_element(By.XPATH, ".//span[contains(@class, 'fw-bold')]")
+            nome = nome_element.text
+
+            # Captura a classe de status
+            status_element = candidato.find_element(By.XPATH, ".//div[contains(@class, 'centered badge bg-danger ng-star-inserted')]")
+            status = status_element.text
+
+            print(f"Nome: {nome}, Status: {status}")
+
+        # for j in range(1, numero_de_nomes+1):
+        #     nome = WebDriverWait(driver, 5).until(
+        #         EC.element_to_be_clickable((By.XPATH, "/html/body/dvg-root/main/dvg-canditado-listagem/div/div/div[2]/div/div/div/div/div[2]/div[{j}]/div/div/div"))
+        #     )
+        #     nome.click()
+
+        #     # Faça o que você precisa depois de clicar no elemento
+        #     # Por exemplo, você pode contar a quantidade de ocorrências de 'moeda social'
+        #     page_text = driver.find_element(By.TAG_NAME, 'body').text
+        #     word_count = page_text.lower().count("moeda social")
+        #     print(f"Quantidade de ocorrências da palavra 'moeda social' na opção [{i}]: {word_count}")
 
 finally:
     # Fechar o navegador
