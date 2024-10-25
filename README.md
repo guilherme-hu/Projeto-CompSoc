@@ -83,4 +83,3 @@ Pronto! Agora todas as bibliotecas necessárias estão instaladas no seu computa
 
 Pronto! Agora o projeto está em execução no seu computador. Siga as instruções exibidas no terminal para interagir com o projeto.
 
-Pronto! Agora você deve estar apto a usar o código do projeto.
