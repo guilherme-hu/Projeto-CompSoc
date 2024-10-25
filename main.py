@@ -9,29 +9,50 @@ import os
 import time
 import pandas as pd
 
+# Defina o diretório de download desejado
+download_dir = os.path.join(os.path.dirname(__file__), "pdf")
+
+keywords = ["moeda social", "outra palavra chave"]
 
 # Configurações do Chrome
 chrome_options = Options()
-download_dir = "/path/to/download"  # Defina o diretório de download desejado
 
 # Adiciona as preferências para configurar o download
 prefs = {
     "download.default_directory": download_dir,
     "profile.default_content_settings.popups": 0,
     "download.prompt_for_download": False,
+    "directory_upgrade": True,
+    "safebrowsing.enabled": True
 }
 
 chrome_options.add_experimental_option("prefs", prefs)
 driver = webdriver.Chrome(options=chrome_options)
 
+def wait_for_download(directory, timeout=30):
+    seconds = 0
+    dl_wait = True
+    while dl_wait and seconds < timeout:
+        time.sleep(1)
+        dl_wait = any([filename.endswith('.crdownload') for filename in os.listdir(directory)])
+        seconds += 1
+    return not dl_wait
 
-# Function to find the newest file in the download directory
 def find_newest_file(directory):
     files = os.listdir(directory)
     paths = [os.path.join(directory, basename) for basename in files]
     return max(paths, key=os.path.getctime)
 
-    
+def read_pdf_and_search_keywords(pdf_path, keywords):
+    with open(pdf_path, 'rb') as file:
+        reader = PyPDF2.PdfFileReader(file)
+        num_pages = reader.getNumPages()
+        text = ""
+        for page in range(num_pages):
+            text += reader.getPage(page).extract_text()
+    keyword_counts = {keyword: text.lower().count(keyword.lower()) for keyword in keywords}
+    return keyword_counts
+
 try:
     # Abrir o site
     driver.get("https://divulgacandcontas.tse.jus.br/divulga/#/home")
@@ -121,43 +142,32 @@ try:
         nomes = driver.find_elements(By.XPATH, "//*[@id='basicInformationSection']/div[2]/div[contains(@class, 'list-group ng-star-inserted')]")
         numero_de_nomes = len(nomes)
 
-        print("Número de candidatos: ", numero_de_nomes)
-        for j in range(1, numero_de_nomes+1):
-
+        for j in range(1, numero_de_nomes + 1):
             candidato = WebDriverWait(driver, 5).until(
                 EC.element_to_be_clickable((By.XPATH, f"""//*[@id="basicInformationSection"]/div[2]/div[{i}]/div/div/div"""))
             )
             candidato.click()
-            
 
             proposta = WebDriverWait(driver, 5).until(
                 EC.element_to_be_clickable((By.XPATH, f"/html/body/dvg-root/main/dvg-canditado-detalhe/div/div/div[2]/form/div/div[2]/div/div/mat-accordion/mat-expansion-panel[4]/mat-expansion-panel-header/span[1]"))
             )
-            proposta.click() 
-            
+            proposta.click()
 
             pdf = WebDriverWait(driver, 5).until(
                 EC.element_to_be_clickable((By.XPATH, f"/html/body/dvg-root/main/dvg-canditado-detalhe/div/div/div[2]/form/div/div[2]/div/div/mat-accordion/mat-expansion-panel[4]/div/div/dvg-candidato-proposta/ol/li/div/div"))
             )
             pdf.click()
 
+            # Esperar até que o download seja concluído
+            if wait_for_download(download_dir):
+                pdf_path = find_newest_file(download_dir)
+                keyword_counts = read_pdf_and_search_keywords(pdf_path, keywords)
+                print(f"Palavras-chave encontradas no PDF: {keyword_counts}")
+                os.remove(pdf_path)
+            else:
+                print("Download não concluído dentro do tempo limite.")
+
             driver.back()
-
-            # pdf_path = find_newest_file(download_dir)
-
-            # # Using PyPDF2 to read the PDF
-            # with open(pdf_path, 'rb') as file:
-            #     reader = PyPDF2.PdfFileReader(file)
-            #     num_pages = reader.getNumPages()
-            #     text = ""
-            #     for page in range(num_pages):
-            #         text += reader.getPage(page).extract_text()
-    
-            # # Faça o que você precisa depois de clicar no elemento
-            # # Por exemplo, você pode contar a quantidade de ocorrências de 'moeda social'
-            # page_text = driver.find_element(By.TAG_NAME, 'body').text
-            # word_count = page_text.lower().count("moeda social")
-            # print(f"Quantidade de ocorrências da palavra 'moeda social' na opção [{i}]: {word_count}")
 
 finally:
     # Fechar o navegador
