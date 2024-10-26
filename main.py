@@ -6,6 +6,8 @@ from selenium.webdriver.chrome.options import Options
 import os
 import time
 import shutil
+import PyPDF2
+import pandas as pd
 
 
 # Configurações do Chrome
@@ -30,6 +32,12 @@ prefs = {
 chrome_options.add_experimental_option("prefs", prefs)
 driver = webdriver.Chrome(options=chrome_options)
 
+
+# Lista de frases-chave
+key_phrases = ["Transferência de renda", "moeda social", "renda básica"]
+
+# Lista para armazenar os resultados
+results = []
 
 try:
     # Abrir o site
@@ -131,6 +139,34 @@ try:
             )
             pdf.click()
 
+            # Esperar o download do arquivo
+            time.sleep(5)
+
+            # # Verificar o PDF baixado
+            pdf_files = [f for f in os.listdir(download_dir) if f.endswith('.pdf')]
+            for pdf_file in pdf_files:
+                pdf_path = os.path.join(download_dir, pdf_file)
+                # with open(pdf_path, 'rb') as file:
+            #         reader = PyPDF2.PdfFileReader(file)
+            #         num_pages = reader.numPages
+            #         text = ""
+            #         for page_num in range(num_pages):
+            #             page = reader.getPage(page_num)
+            #             text += page.extract_text()
+
+            #         # Verificar se alguma das frases-chave está no texto
+            #         found_phrases = [phrase for phrase in key_phrases if phrase in text]
+            #         if found_phrases:
+            #             # Adicionar os resultados à lista
+            #             results.append({
+            #                 "Nome do Candidato": "Nome do Candidato",  # Substitua pelo nome real do candidato
+            #                 "Eleito": "Sim/Não",  # Substitua pela informação real se o candidato foi eleito
+            #                 "Palavras-Chave": ", ".join(found_phrases)
+            #             })
+
+            # Apagar o PDF após a leitura
+            os.remove(pdf_path)
+
             # Voltar para a página de lista de candidatos
             driver.back()
             time.sleep(1)  # Pausa para carregar a lista novamente
@@ -142,3 +178,7 @@ finally:
     os.makedirs(download_dir)
 
     driver.quit()
+
+    # Salvar os resultados em uma planilha
+    df = pd.DataFrame(results)
+    df.to_excel("resultados.xlsx", index=False)
