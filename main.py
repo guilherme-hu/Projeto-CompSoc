@@ -92,7 +92,7 @@ try:
     municipio_button.click()
 
     # Iterar através dos municípios do RJ
-    for i in range(2, 94):  # Ajustar o número de municípios conforme necessário
+    for i in range(2, 94):  # Ajustar o número de municípios conforme necessário -> 2, 94
         xpath = f"/html/body/dvg-root/main/dvg-canditado-listagem/div/div/div[1]/form/div[1]/div/div[2]/div[1]/div[2]/select/option[{i}]"
         
         municipio = WebDriverWait(driver, 5).until(
@@ -127,7 +127,7 @@ try:
 
 
             candidato.click()
-
+    
             # Interagir com o elemento dentro da página do candidato
             proposta = WebDriverWait(driver, 5).until(
                 EC.element_to_be_clickable((By.XPATH, f"/html/body/dvg-root/main/dvg-canditado-detalhe/div/div/div[2]/form/div/div[2]/div/div/mat-accordion/mat-expansion-panel[4]/mat-expansion-panel-header/span[1]"))
@@ -146,23 +146,24 @@ try:
             pdf_files = [f for f in os.listdir(download_dir) if f.endswith('.pdf')]
             for pdf_file in pdf_files:
                 pdf_path = os.path.join(download_dir, pdf_file)
-                # with open(pdf_path, 'rb') as file:
-            #         reader = PyPDF2.PdfFileReader(file)
-            #         num_pages = reader.numPages
-            #         text = ""
-            #         for page_num in range(num_pages):
-            #             page = reader.getPage(page_num)
-            #             text += page.extract_text()
+                with open(pdf_path, 'rb') as file:
+                    reader = PyPDF2.PdfReader(file)
+                    num_pages = len(reader.pages)
+                    text = ""
+                    print(num_pages)
+                    for page_num in range(num_pages):
+                        page = reader.pages[page_num]
+                        text += page.extract_text()
 
-            #         # Verificar se alguma das frases-chave está no texto
-            #         found_phrases = [phrase for phrase in key_phrases if phrase in text]
-            #         if found_phrases:
-            #             # Adicionar os resultados à lista
-            #             results.append({
-            #                 "Nome do Candidato": "Nome do Candidato",  # Substitua pelo nome real do candidato
-            #                 "Eleito": "Sim/Não",  # Substitua pela informação real se o candidato foi eleito
-            #                 "Palavras-Chave": ", ".join(found_phrases)
-            #             })
+                    # Verificar se alguma das frases-chave está no texto
+                    found_phrases = [phrase for phrase in key_phrases if phrase in text]
+                    if found_phrases:
+                        # Adicionar os resultados à lista
+                        results.append({
+                            "Nome do Candidato": "Nome do Candidato",  # Substitua pelo nome real do candidato
+                            "Eleito": "Sim/Não",  # Substitua pela informação real se o candidato foi eleito
+                            "Palavras-Chave": ", ".join(found_phrases)
+                        })
 
             # Apagar o PDF após a leitura
             os.remove(pdf_path)
@@ -172,13 +173,16 @@ try:
             time.sleep(1)  # Pausa para carregar a lista novamente
           
 finally:
+
+    driver.quit()
+
     # Apagar e criar a pasta pdf -> limpar memoria
     if os.path.exists(download_dir):
         shutil.rmtree(download_dir)
     os.makedirs(download_dir)
 
-    driver.quit()
-
+    print (results)
     # Salvar os resultados em uma planilha
-    df = pd.DataFrame(results)
-    df.to_excel("resultados.xlsx", index=False)
+    if results:
+        df = pd.DataFrame(results)
+        df.to_excel("resultados.xlsx", index=False)
