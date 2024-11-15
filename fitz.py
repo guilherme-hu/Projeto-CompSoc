@@ -7,12 +7,14 @@ import os
 import time
 import shutil
 import fitz
+import re
 
 def check_keywords_in_pdf(pdf_path, keywords):
     with fitz.open(pdf_path) as pdf:
         for page in pdf:
-            text = page.get_text()
-            if any(keyword in text.lower() for keyword in keywords):
+            text = "\b(?:{})\b".format("|".join([re.escape(frase) for frase in keywords]))
+            text_instances = page.search_for(text, text=True)
+            if text_instances:
                 return True
     return False
 
@@ -136,7 +138,7 @@ try:
                 )
                 proposta.click()
 
-                pdf = WebDriverWait(driver, 5).until(
+                pdf = WebDriverWait(driver, 8).until(
                     EC.element_to_be_clickable((By.XPATH, f"/html/body/dvg-root/main/dvg-canditado-detalhe/div/div/div[2]/form/div/div[2]/div/div/mat-accordion/mat-expansion-panel[4]/div/div/dvg-candidato-proposta/ol/li/div/div"))
                 )
                 pdf.click()
@@ -147,7 +149,7 @@ try:
                 arquivos = os.listdir(download_dir)
                 primeiro_pdf = next((file for file in arquivos if file.endswith(".pdf")), None)
                 pdf_name = os.path.join(download_dir, primeiro_pdf)
-                keywords = ["moeda","moedas", "comunitários", "comunitário"]
+                keywords = ["moeda social","moedas sociais", "bancos comunitários", "banco comunitário", "transferência de renda, renda"]
 
                 if check_keywords_in_pdf(pdf_name, keywords):
                     situacao = driver.find_element(By.XPATH, "/html/body/dvg-root/main/dvg-canditado-detalhe/div/div/div[1]/dvg-candidato-header/div/div/div/div/div/div").text
@@ -158,11 +160,10 @@ try:
                 os.remove(pdf_name)  # Apaga o PDF       
                 
                 driver.back()
-                time.sleep(1)  # Pausa para carregar a lista novamente 
-                
+                time.sleep(5)
             except:
               driver.back()
-              time.sleep(1)  # Pausa para carregar a lista novamente      
+              time.sleep(5)  # Pausa para carregar a lista novamente      
 
             
           
