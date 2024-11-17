@@ -3,3 +3,4 @@ pandas
 PyPDF2
 pymupdf
 unidecode
+openpyxl
