@@ -106,7 +106,7 @@ try:
     municipio_button.click()
 
     # Iterar através dos municípios do RJ
-    for i in range(2, 3):  # Ajustar o número de municípios conforme necessário -> 2, 94
+    for i in range(2, 94):  # Ajustar o número de municípios conforme necessário -> 2, 94
         xpath = f"/html/body/dvg-root/main/dvg-canditado-listagem/div/div/div[1]/form/div[1]/div/div[2]/div[1]/div[2]/select/option[{i}]"
         
         municipio = WebDriverWait(driver, 5).until(
