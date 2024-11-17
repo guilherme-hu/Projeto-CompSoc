@@ -83,3 +83,6 @@ Pronto! Agora todas as bibliotecas necessárias estão instaladas no seu computa
 
 Pronto! Agora o projeto está em execução no seu computador. Siga as instruções exibidas no terminal para interagir com o projeto.
 
+### Passo 5: Coleta dos resultados
+
+Quando o código terminar de rodar, serão gerados três arquivos com os resultados encontrados na busca: um arquivo em formato txt, outro em formato csv, e um terceiro em formato Excel. Os três contém os mesmos resultados salvos! Escolha o formato que preferir e acesse!
