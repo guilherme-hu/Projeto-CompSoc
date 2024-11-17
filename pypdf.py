@@ -8,13 +8,33 @@ import time
 import shutil
 import PyPDF2
 import pandas as pd
+from unidecode import unidecode
+
+
+# Lista de frases-chave
+keywords = ["moeda social", "moedas sociais", "bancos comunitários", "banco comunitário", "moeda local", "moedas locais"]
+keywords2 = ["renda complementar", "renda mínima", "renda básica", "renda social",
+            "transferência de renda", "distribuição de renda", "complementação de renda", 
+            "transferir renda", "distribuir renda", "complementar renda"]
+
+# # Perguntar ao usuário se deseja adicionar mais palavras-chave
+# add_keywords = input("Deseja adicionar mais alguma palavra-chave? (S/N): ").strip().lower()
+
+# while add_keywords == 's':
+#     new_keyword = input("Digite a nova palavra-chave: ").strip()
+#     if new_keyword:
+#         keywords.append(new_keyword)
+#     add_keywords = input("Deseja adicionar mais alguma palavra-chave? (S/N): ").strip().lower()
+
+
+# Lista para armazenar os resultados
+results = []
 
 
 # Configurações do Chrome
 chrome_options = Options()
 # Define o diretório de download desejado com base no local do arquivo atual
 download_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "pdf")
-
 
 # Cria a pasta "pdf" se não existir
 if not os.path.exists(download_dir):
@@ -32,12 +52,6 @@ prefs = {
 chrome_options.add_experimental_option("prefs", prefs)
 driver = webdriver.Chrome(options=chrome_options)
 
-
-# Lista de frases-chave
-key_phrases = ["Transferência de renda", "moeda social", "renda básica"]
-
-# Lista para armazenar os resultados
-results = []
 
 try:
     # Abrir o site
@@ -92,7 +106,7 @@ try:
     municipio_button.click()
 
     # Iterar através dos municípios do RJ
-    for i in range(2, 94):  # Ajustar o número de municípios conforme necessário -> 2, 94
+    for i in range(2, 3):  # Ajustar o número de municípios conforme necessário -> 2, 94
         xpath = f"/html/body/dvg-root/main/dvg-canditado-listagem/div/div/div[1]/form/div[1]/div/div[2]/div[1]/div[2]/select/option[{i}]"
         
         municipio = WebDriverWait(driver, 5).until(
@@ -125,7 +139,6 @@ try:
             driver.execute_script("arguments[0].scrollIntoView();", candidato)  # Garantir que o elemento está visível
             time.sleep(1)  # Pausa breve para garantir visibilidade do elemento
 
-
             candidato.click()
     
             # Interagir com o elemento dentro da página do candidato
@@ -142,7 +155,7 @@ try:
             # Esperar o download do arquivo
             time.sleep(5)
 
-            # # Verificar o PDF baixado
+            # Verificar o PDF baixado
             pdf_files = [f for f in os.listdir(download_dir) if f.endswith('.pdf')]
             for pdf_file in pdf_files:
                 pdf_path = os.path.join(download_dir, pdf_file)
@@ -150,22 +163,34 @@ try:
                     reader = PyPDF2.PdfReader(file)
                     num_pages = len(reader.pages)
                     text = ""
-                    print(num_pages)
                     for page_num in range(num_pages):
                         page = reader.pages[page_num]
                         text += page.extract_text()
 
+                    # Remover acentos do texto extraído
+                    text = unidecode(text)
+
                     # Verificar se alguma das frases-chave está no texto
-                    found_phrases = [phrase for phrase in key_phrases if phrase in text]
-                    if found_phrases:
+                    found_phrases = [phrase for phrase in keywords if phrase in text]
+                    found_phrases2 = [phrase for phrase in keywords2 if phrase in text]
+                    if found_phrases or found_phrases2:
+                        situacao = unidecode(driver.find_element(By.XPATH, "/html/body/dvg-root/main/dvg-canditado-detalhe/div/div/div[1]/dvg-candidato-header/div/div/div/div/div/div").text)
+                        candidato_nome = unidecode(driver.find_element(By.XPATH, '//*[@id="basicInformationSection"]/div[2]/dvg-candidato-dados/div/div[1]/label[2]').text)
+                        municipio_cargo = unidecode(driver.find_element(By.XPATH, '/html/body/dvg-root/main/dvg-canditado-detalhe/div/div/div[1]/dvg-candidato-header/div/div/div/span/label[1]').text)
+                        partido = unidecode(driver.find_element(By.XPATH, '/html/body/dvg-root/main/dvg-canditado-detalhe/div/div/div[1]/dvg-candidato-header/div/div/div/span/label[2]').text)
+                        # print(f"Palavras-chave encontradas no PDF de {candidato_nome} ({municipio_cargo}): {found_phrases}")    
+                        
                         # Adicionar os resultados à lista
                         results.append({
-                            "Nome do Candidato": "Nome do Candidato",  # Substitua pelo nome real do candidato
-                            "Eleito": "Sim/Não",  # Substitua pela informação real se o candidato foi eleito
-                            "Palavras-Chave": ", ".join(found_phrases)
+                            "Nome do Candidato": candidato_nome,  
+                            "Partido": partido,
+                            "Municipio": municipio_cargo,
+                            "Situacao": situacao,  
+                            "Moeda Social": ", ".join(found_phrases),
+                            "Palavras chaves Amplas": ", ".join(found_phrases2)
                         })
 
-            # Apagar o PDF após a leitura
+            # Apagar o PDF após cada leitura
             os.remove(pdf_path)
 
             # Voltar para a página de lista de candidatos
@@ -173,7 +198,7 @@ try:
             time.sleep(1)  # Pausa para carregar a lista novamente
           
 finally:
-
+    # Fechar o chrome
     driver.quit()
 
     # Apagar e criar a pasta pdf -> limpar memoria
@@ -181,8 +206,21 @@ finally:
         shutil.rmtree(download_dir)
     os.makedirs(download_dir)
 
-    print (results)
-    # Salvar os resultados em uma planilha
+    # print(results)
+    
+    # Salvar os resultados em uma planilha Excel, em um arquivo CSV e em um txt
     if results:
         df = pd.DataFrame(results)
         df.to_excel("resultados.xlsx", index=False)
+        df.to_csv("resultados.csv", index=False)
+        
+        # Salvar os resultados em um arquivo de texto
+        with open("resultados.txt", "w") as txt_file:
+            for result in results:
+                txt_file.write(f"Nome do Candidato: {unidecode(result['Nome do Candidato'])}\n")
+                txt_file.write(f"Partido: {unidecode(result['Partido'])}\n")
+                txt_file.write(f"Municipio: {unidecode(result['Municipio'])}\n")
+                txt_file.write(f"Situacao: {unidecode(result['Situacao'])}\n")
+                txt_file.write(f"Moeda Social: {unidecode(result['Moeda Social'])}\n")
+                txt_file.write(f"Palavras chaves Amplas: {unidecode(result['Palavras chaves Amplas'])}\n")
+                txt_file.write("\n") 
