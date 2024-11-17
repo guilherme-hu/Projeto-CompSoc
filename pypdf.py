@@ -141,61 +141,67 @@ try:
 
             candidato.click()
     
-            # Interagir com o elemento dentro da página do candidato
-            proposta = WebDriverWait(driver, 5).until(
-                EC.element_to_be_clickable((By.XPATH, f"/html/body/dvg-root/main/dvg-canditado-detalhe/div/div/div[2]/form/div/div[2]/div/div/mat-accordion/mat-expansion-panel[4]/mat-expansion-panel-header/span[1]"))
-            )
-            proposta.click()
+            try:
+                # Interagir com o elemento dentro da página do candidato
+                proposta = WebDriverWait(driver, 5).until(
+                    EC.element_to_be_clickable((By.XPATH, f"/html/body/dvg-root/main/dvg-canditado-detalhe/div/div/div[2]/form/div/div[2]/div/div/mat-accordion/mat-expansion-panel[4]/mat-expansion-panel-header/span[1]"))
+                )
+                proposta.click()
 
-            pdf = WebDriverWait(driver, 5).until(
-                EC.element_to_be_clickable((By.XPATH, f"/html/body/dvg-root/main/dvg-canditado-detalhe/div/div/div[2]/form/div/div[2]/div/div/mat-accordion/mat-expansion-panel[4]/div/div/dvg-candidato-proposta/ol/li/div/div"))
-            )
-            pdf.click()
+                pdf = WebDriverWait(driver, 5).until(
+                    EC.element_to_be_clickable((By.XPATH, f"/html/body/dvg-root/main/dvg-canditado-detalhe/div/div/div[2]/form/div/div[2]/div/div/mat-accordion/mat-expansion-panel[4]/div/div/dvg-candidato-proposta/ol/li/div/div"))
+                )
+                pdf.click()
 
-            # Esperar o download do arquivo
-            time.sleep(5)
+                # Esperar o download do arquivo
+                time.sleep(5)
 
-            # Verificar o PDF baixado
-            pdf_files = [f for f in os.listdir(download_dir) if f.endswith('.pdf')]
-            for pdf_file in pdf_files:
-                pdf_path = os.path.join(download_dir, pdf_file)
-                with open(pdf_path, 'rb') as file:
-                    reader = PyPDF2.PdfReader(file)
-                    num_pages = len(reader.pages)
-                    text = ""
-                    for page_num in range(num_pages):
-                        page = reader.pages[page_num]
-                        text += page.extract_text()
+                # Verificar o PDF baixado
+                pdf_files = [f for f in os.listdir(download_dir) if f.endswith('.pdf')]
+                for pdf_file in pdf_files:
+                    pdf_path = os.path.join(download_dir, pdf_file)
+                    with open(pdf_path, 'rb') as file:
+                        reader = PyPDF2.PdfReader(file)
+                        num_pages = len(reader.pages)
+                        text = ""
+                        for page_num in range(num_pages):
+                            page = reader.pages[page_num]
+                            text += page.extract_text()
 
-                    # Remover acentos do texto extraído
-                    text = unidecode(text)
+                        # Remover acentos do texto extraído
+                        text = unidecode(text)
 
-                    # Verificar se alguma das frases-chave está no texto
-                    found_phrases = [phrase for phrase in keywords if phrase in text]
-                    found_phrases2 = [phrase for phrase in keywords2 if phrase in text]
-                    if found_phrases or found_phrases2:
-                        situacao = unidecode(driver.find_element(By.XPATH, "/html/body/dvg-root/main/dvg-canditado-detalhe/div/div/div[1]/dvg-candidato-header/div/div/div/div/div/div").text)
-                        candidato_nome = unidecode(driver.find_element(By.XPATH, '//*[@id="basicInformationSection"]/div[2]/dvg-candidato-dados/div/div[1]/label[2]').text)
-                        municipio_cargo = unidecode(driver.find_element(By.XPATH, '/html/body/dvg-root/main/dvg-canditado-detalhe/div/div/div[1]/dvg-candidato-header/div/div/div/span/label[1]').text)
-                        partido = unidecode(driver.find_element(By.XPATH, '/html/body/dvg-root/main/dvg-canditado-detalhe/div/div/div[1]/dvg-candidato-header/div/div/div/span/label[2]').text)
-                        # print(f"Palavras-chave encontradas no PDF de {candidato_nome} ({municipio_cargo}): {found_phrases}")    
-                        
-                        # Adicionar os resultados à lista
-                        results.append({
-                            "Nome do Candidato": candidato_nome,  
-                            "Partido": partido,
-                            "Municipio": municipio_cargo,
-                            "Situacao": situacao,  
-                            "Moeda Social": ", ".join(found_phrases),
-                            "Palavras chaves Amplas": ", ".join(found_phrases2)
-                        })
+                        # Verificar se alguma das frases-chave está no texto
+                        found_phrases = [phrase for phrase in keywords if phrase in text]
+                        found_phrases2 = [phrase for phrase in keywords2 if phrase in text]
+                        if found_phrases or found_phrases2:
+                            situacao = unidecode(driver.find_element(By.XPATH, "/html/body/dvg-root/main/dvg-canditado-detalhe/div/div/div[1]/dvg-candidato-header/div/div/div/div/div/div").text)
+                            candidato_nome = unidecode(driver.find_element(By.XPATH, '//*[@id="basicInformationSection"]/div[2]/dvg-candidato-dados/div/div[1]/label[2]').text)
+                            municipio_cargo = unidecode(driver.find_element(By.XPATH, '/html/body/dvg-root/main/dvg-canditado-detalhe/div/div/div[1]/dvg-candidato-header/div/div/div/span/label[1]').text)
+                            partido = unidecode(driver.find_element(By.XPATH, '/html/body/dvg-root/main/dvg-canditado-detalhe/div/div/div[1]/dvg-candidato-header/div/div/div/span/label[2]').text)
+                            # print(f"Palavras-chave encontradas no PDF de {candidato_nome} ({municipio_cargo}): {found_phrases}")    
+                            
+                            # Adicionar os resultados à lista
+                            results.append({
+                                "Nome do Candidato": candidato_nome,  
+                                "Partido": partido,
+                                "Municipio": municipio_cargo,
+                                "Situacao": situacao,  
+                                "Moeda Social": ", ".join(found_phrases),
+                                "Palavras chaves Amplas": ", ".join(found_phrases2)
+                            })
 
-            # Apagar o PDF após cada leitura
-            os.remove(pdf_path)
+                # Apagar o PDF após cada leitura
+                os.remove(pdf_path)
 
-            # Voltar para a página de lista de candidatos
-            driver.back()
-            time.sleep(1)  # Pausa para carregar a lista novamente
+                # Voltar para a página de lista de candidatos
+                driver.back()
+                time.sleep(1)  # Pausa para carregar a lista novamente
+
+            except:
+                driver.back()
+                time.sleep(5)  # Pausa para carregar a lista novamente     
+
           
 finally:
     # Fechar o chrome
