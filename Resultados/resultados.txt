@@ -1,3 +1,31 @@
+Nome do Candidato: JOSE RAFAEL RIBEIRO
+Partido: Partido Socialismo E Liberdade - PSOL
+Municipio: Prefeito - Angra Dos Reis/ RJ
+Situacao: Nao eleito
+Moeda Social: 
+Palavras chaves Amplas: renda minima
+
+Nome do Candidato: RONALD DE CASSIO DAIBES MOREIRA
+Partido: Uniao Brasil - UNIAO
+Municipio: Prefeito - Aperibe/ RJ
+Situacao: ELEITO
+Moeda Social: 
+Palavras chaves Amplas: renda minima, transferencia de renda
+
+Nome do Candidato: CELSO SILVESTRE DE ABREU
+Partido: Partido Liberal - PL
+Municipio: Prefeito - Areal/ RJ
+Situacao: Nao eleito
+Moeda Social: moeda social
+Palavras chaves Amplas: 
+
+Nome do Candidato: ALEXANDRE DE OLIVEIRA MARTINS
+Partido: Republicanos - REPUBLICANOS
+Municipio: Prefeito - Armacao Dos Buzios/ RJ
+Situacao: ELEITO
+Moeda Social: 
+Palavras chaves Amplas: renda basica
+
 Nome do Candidato: RAFAEL AGUIAR PEREIRA DE SOUZA
 Partido: Partido Liberal - PL
 Municipio: Prefeito - Armacao Dos Buzios/ RJ
@@ -5,12 +33,33 @@ Situacao: Nao eleito
 Moeda Social: moeda social
 Palavras chaves Amplas: 
 
+Nome do Candidato: MARCELO MAGNO FELIX DOS SANTOS
+Partido: Partido Liberal - PL
+Municipio: Prefeito - Arraial Do Cabo/ RJ
+Situacao: ELEITO
+Moeda Social: 
+Palavras chaves Amplas: distribuicao de renda
+
 Nome do Candidato: PETTERSON MAGNO DA SILVA SANTOS
 Partido: Partido Socialismo E Liberdade - PSOL
 Municipio: Prefeito - Barra Mansa/ RJ
 Situacao: Nao eleito
 Moeda Social: moedas sociais
+Palavras chaves Amplas: renda minima, transferencia de renda, distribuicao de renda
+
+Nome do Candidato: FRANCISCO DE ASSIS FREITAS
+Partido: Partido Socialista Brasileiro - PSB
+Municipio: Prefeito - Belford Roxo/ RJ
+Situacao: Nao eleito
+Moeda Social: moeda social
 Palavras chaves Amplas: 
+
+Nome do Candidato: MARCIO CORREIA DE OLIVEIRA
+Partido: Uniao Brasil - UNIAO
+Municipio: Prefeito - Belford Roxo/ RJ
+Situacao: ELEITO
+Moeda Social: 
+Palavras chaves Amplas: transferencia de renda
 
 Nome do Candidato: MATHEUS CARNEIRO BARROS
 Partido: Republicanos - REPUBLICANOS
@@ -19,30 +68,107 @@ Situacao: Nao eleito
 Moeda Social: moeda social
 Palavras chaves Amplas: 
 
+Nome do Candidato: SERGIO LUIZ COSTA AZEVEDO FILHO
+Partido: Partido Liberal - PL
+Municipio: Prefeito - Cabo Frio/ RJ
+Situacao: ELEITO
+Moeda Social: 
+Palavras chaves Amplas: distribuicao de renda
+
+Nome do Candidato: MAGDALA FURTADO
+Partido: Partido Verde - PV
+Municipio: Prefeito - Cabo Frio/ RJ
+Situacao: Nao eleito
+Moeda Social: 
+Palavras chaves Amplas: transferencia de renda, distribuicao de renda
+
 Nome do Candidato: RAFAEL PECANHA DE MOURA
 Partido: Rede Sustentabilidade - REDE
 Municipio: Prefeito - Cabo Frio/ RJ
 Situacao: Nao eleito
-Moeda Social: moedas sociais, moeda local
-Palavras chaves Amplas: 
+Moeda Social: moeda social, moedas sociais, moeda local
+Palavras chaves Amplas: transferencia de renda, distribuicao de renda
 
 Nome do Candidato: RAFAEL PECANHA DE MOURA
 Partido: Rede Sustentabilidade - REDE
 Municipio: Prefeito - Cabo Frio/ RJ
 Situacao: Inapto
-Moeda Social: moedas sociais, moeda local
-Palavras chaves Amplas: 
+Moeda Social: moeda social, moedas sociais, moeda local
+Palavras chaves Amplas: transferencia de renda, distribuicao de renda
 
 Nome do Candidato: MARCOS ANTONIO DOS SANTOS SOUZA
 Partido: Solidariedade - SOLIDARIEDADE
 Municipio: Prefeito - Cachoeiras De Macacu/ RJ
 Situacao: Nao eleito
 Moeda Social: moeda social
-Palavras chaves Amplas: 
+Palavras chaves Amplas: transferencia de renda
 
 Nome do Candidato: JOAO CELSO CUNHA DOS SANTOS
 Partido: Solidariedade - SOLIDARIEDADE
 Municipio: Prefeito - Cambuci/ RJ
+Situacao: Nao eleito
+Moeda Social: moeda social
+Palavras chaves Amplas: 
+
+Nome do Candidato: PEDRO CARLOS MENDES
+Partido: Partido Democratico Trabalhista - PDT
+Municipio: Prefeito - Cambuci/ RJ
+Situacao: Inapto
+Moeda Social: 
+Palavras chaves Amplas: transferencia de renda
+
+Nome do Candidato: MADELEINE FARIAS RANGEL DYKEMAN
+Partido: Uniao Brasil - UNIAO
+Municipio: Prefeito - Campos Dos Goytacazes/ RJ
+Situacao: Nao eleito
+Moeda Social: 
+Palavras chaves Amplas: renda minima
+
+Nome do Candidato: FABRICIO LIRIO RODRIGUES
+Partido: Rede Sustentabilidade - REDE
+Municipio: Prefeito - Campos Dos Goytacazes/ RJ
+Situacao: Nao eleito
+Moeda Social: 
+Palavras chaves Amplas: renda minima, transferencia de renda
+
+Nome do Candidato: FERNANDO SERGIO TRINDADE CRESPO
+Partido: Partido Renovador Trabalhista Brasileiro - PRTB
+Municipio: Prefeito - Campos Dos Goytacazes/ RJ
+Situacao: Nao eleito
+Moeda Social: 
+Palavras chaves Amplas: transferencia de renda
+
+Nome do Candidato: RAPHAEL ELBAS NERI DE THUIN
+Partido: Partido Renovacao Democratica - PRD
+Municipio: Prefeito - Campos Dos Goytacazes/ RJ
+Situacao: Nao eleito
+Moeda Social: 
+Palavras chaves Amplas: transferencia de renda
+
+Nome do Candidato: WLADIMIR BARROS ASSED MATHEUS DE OLIVEIRA
+Partido: Progressistas - PP
+Municipio: Prefeito - Campos Dos Goytacazes/ RJ
+Situacao: ELEITO
+Moeda Social: 
+Palavras chaves Amplas: transferencia de renda
+
+Nome do Candidato: EDILAINE DA CONCEICAO DORICO
+Partido: Republicanos - REPUBLICANOS
+Municipio: Prefeito - Comendador Levy Gasparian/ RJ
+Situacao: Nao eleito
+Moeda Social: 
+Palavras chaves Amplas: transferencia de renda
+
+Nome do Candidato: LEOPOLDO CESAR DA SILVA
+Partido: Partido Democratico Trabalhista - PDT
+Municipio: Prefeito - Conceicao De Macabu/ RJ
+Situacao: Nao eleito
+Moeda Social: moeda social
+Palavras chaves Amplas: 
+
+Nome do Candidato: LIDIA MERCEDES OLIVEIRA SOARES
+Partido: Partido Dos Trabalhadores - PT
+Municipio: Prefeito - Conceicao De Macabu/ RJ
 Situacao: Nao eleito
 Moeda Social: moeda social
 Palavras chaves Amplas: 
@@ -54,11 +180,32 @@ Situacao: ELEITO
 Moeda Social: moeda local
 Palavras chaves Amplas: 
 
+Nome do Candidato: LEONAN LOPES MELHORANCE
+Partido: Partido Liberal - PL
+Municipio: Prefeito - Cordeiro/ RJ
+Situacao: ELEITO
+Moeda Social: 
+Palavras chaves Amplas: distribuicao de renda
+
+Nome do Candidato: ARMANDO ROSEMBERTO MATTOS TEIXEIRA
+Partido: Solidariedade - SOLIDARIEDADE
+Municipio: Prefeito - Duas Barras/ RJ
+Situacao: ELEITO
+Moeda Social: moeda local
+Palavras chaves Amplas: 
+
+Nome do Candidato: DIEGO THURLER ORNELLAS
+Partido: Partido Democratico Trabalhista - PDT
+Municipio: Prefeito - Duas Barras/ RJ
+Situacao: Nao eleito
+Moeda Social: 
+Palavras chaves Amplas: transferencia de renda
+
 Nome do Candidato: OCTAVIO BOTELHO LUTTERBACH
 Partido: Partido Liberal - PL
 Municipio: Prefeito - Duas Barras/ RJ
 Situacao: Nao eleito
-Moeda Social: 
+Moeda Social: moeda social
 Palavras chaves Amplas: distribuir renda
 
 Nome do Candidato: MARLON VIVAS CABRAL
@@ -68,17 +215,66 @@ Situacao: Nao eleito
 Moeda Social: moeda social
 Palavras chaves Amplas: 
 
-Nome do Candidato: JAIR JOSE DIAS
-Partido: Partido Dos Trabalhadores - PT
-Municipio: Prefeito - Itaborai/ RJ
+Nome do Candidato: MARCO ANTONIO MOTTA RAMOS
+Partido: Partido Socialista Brasileiro - PSB
+Municipio: Prefeito - Iguaba Grande/ RJ
 Situacao: Nao eleito
 Moeda Social: moeda social
 Palavras chaves Amplas: 
 
-Nome do Candidato: ANTONIO DONIZETE GASPARINO DE JESUS
-Partido: Uniao Brasil - UNIAO
+Nome do Candidato: MONICA ANDRADE DOS SANTOS
+Partido: Partido Dos Trabalhadores - PT
+Municipio: Prefeito - Iguaba Grande/ RJ
+Situacao: Nao eleito
+Moeda Social: 
+Palavras chaves Amplas: transferencia de renda
+
+Nome do Candidato: JAIR JOSE DIAS
+Partido: Partido Dos Trabalhadores - PT
+Municipio: Prefeito - Itaborai/ RJ
+Situacao: Nao eleito
+Moeda Social: moeda social, banco comunitario
+Palavras chaves Amplas: renda basica
+
+Nome do Candidato: MARCELO JANDRE DELAROLI
+Partido: Partido Liberal - PL
+Municipio: Prefeito - Itaborai/ RJ
+Situacao: ELEITO
+Moeda Social: moeda social
+Palavras chaves Amplas: distribuicao de renda
+
+Nome do Candidato: ROBENS FONSECA PEDROSA JUNIOR
+Partido: Rede Sustentabilidade - REDE
 Municipio: Prefeito - Itaguai/ RJ
 Situacao: Nao eleito
+Moeda Social: moeda social
+Palavras chaves Amplas: renda basica, complementacao de renda
+
+Nome do Candidato: RUBEM VIEIRA DE SOUZA
+Partido: Podemos - PODE
+Municipio: Prefeito - Itaguai/ RJ
+Situacao: Nao eleito
+Moeda Social: moeda social
+Palavras chaves Amplas: renda basica, complementacao de renda
+
+Nome do Candidato: ANTONIO FERNANDES ANTUNES
+Partido: Movimento Democratico Brasileiro - MDB
+Municipio: Prefeito - Itaguai/ RJ
+Situacao: Nao eleito
+Moeda Social: moeda social
+Palavras chaves Amplas: renda basica, complementacao de renda
+
+Nome do Candidato: GILBERTO CHEDIAC LEITAO TORRES
+Partido: Partido Renovacao Democratica - PRD
+Municipio: Prefeito - Itaguai/ RJ
+Situacao: Inapto
+Moeda Social: moeda social
+Palavras chaves Amplas: renda basica, complementacao de renda
+
+Nome do Candidato: LUCIANO CARVALHO MOTA
+Partido: Partido Dos Trabalhadores - PT
+Municipio: Prefeito - Itaguai/ RJ
+Situacao: Inapto
 Moeda Social: moeda social
 Palavras chaves Amplas: 
 
@@ -87,7 +283,14 @@ Partido: Partido Liberal - PL
 Municipio: Prefeito - Itaguai/ RJ
 Situacao: Nao eleito
 Moeda Social: 
-Palavras chaves Amplas: renda complementar
+Palavras chaves Amplas: renda complementar, transferencia de renda
+
+Nome do Candidato: JORGE FERES BEIRO
+Partido: Movimento Democratico Brasileiro - MDB
+Municipio: Prefeito - Itaocara/ RJ
+Situacao: Nao eleito
+Moeda Social: 
+Palavras chaves Amplas: transferencia de renda
 
 Nome do Candidato: EDUARDO GUEDES DA SILVA
 Partido: Solidariedade - SOLIDARIEDADE
@@ -95,6 +298,27 @@ Municipio: Prefeito - Itatiaia/ RJ
 Situacao: Nao eleito
 Moeda Social: moeda local
 Palavras chaves Amplas: 
+
+Nome do Candidato: IRINEU NOGUEIRA COELHO
+Partido: Movimento Democratico Brasileiro - MDB
+Municipio: Prefeito - Itatiaia/ RJ
+Situacao: Nao eleito
+Moeda Social: 
+Palavras chaves Amplas: renda minima, transferencia de renda
+
+Nome do Candidato: RICARDA HELENA DA SILVA
+Partido: Partido Socialismo E Liberdade - PSOL
+Municipio: Prefeito - Itatiaia/ RJ
+Situacao: Nao eleito
+Moeda Social: moeda social
+Palavras chaves Amplas: 
+
+Nome do Candidato: HELDER PEDRO BARROS
+Partido: Movimento Democratico Brasileiro - MDB
+Municipio: Prefeito - Japeri/ RJ
+Situacao: Nao eleito
+Moeda Social: 
+Palavras chaves Amplas: complementacao de renda
 
 Nome do Candidato: JOSE ELIEZER TOSTES PINTO
 Partido: Movimento Democratico Brasileiro - MDB
@@ -110,26 +334,96 @@ Situacao: Nao eleito
 Moeda Social: moeda local
 Palavras chaves Amplas: 
 
+Nome do Candidato: DANILO FUNKE LEME
+Partido: Partido Socialista Brasileiro - PSB
+Municipio: Prefeito - Macae/ RJ
+Situacao: Nao eleito
+Moeda Social: 
+Palavras chaves Amplas: transferencia de renda
+
+Nome do Candidato: ALUIZIO DOS SANTOS JUNIOR
+Partido: Partido Democratico Trabalhista - PDT
+Municipio: Prefeito - Macae/ RJ
+Situacao: Nao eleito
+Moeda Social: moeda social
+Palavras chaves Amplas: 
+
+Nome do Candidato: FABIO PEREIRA PASSOS
+Partido: Avante - AVANTE
+Municipio: Prefeito - Macae/ RJ
+Situacao: Nao eleito
+Moeda Social: 
+Palavras chaves Amplas: transferencia de renda
+
+Nome do Candidato: MARCELO ABREU MANSUR
+Partido: Republicanos - REPUBLICANOS
+Municipio: Prefeito - Macuco/ RJ
+Situacao: Nao eleito
+Moeda Social: 
+Palavras chaves Amplas: distribuicao de renda
+
+Nome do Candidato: FABIO DE AZEVEDO BARBOSA
+Partido: Partido Liberal - PL
+Municipio: Prefeito - Marica/ RJ
+Situacao: Nao eleito
+Moeda Social: moeda social
+Palavras chaves Amplas: distribuicao de renda
+
+Nome do Candidato: MARCIA GONCALVES SANTIAGO COELHO
+Partido: Partido Da Mulher Brasileira - PMB
+Municipio: Prefeito - Marica/ RJ
+Situacao: Nao eleito
+Moeda Social: 
+Palavras chaves Amplas: distribuicao de renda
+
+Nome do Candidato: WASHINGTON LUIZ CARDOSO SIQUEIRA
+Partido: Partido Dos Trabalhadores - PT
+Municipio: Prefeito - Marica/ RJ
+Situacao: ELEITO
+Moeda Social: moeda social
+Palavras chaves Amplas: renda basica
+
+Nome do Candidato: LUIZ CLAUDIO LOPES DE SOUZA
+Partido: Partido Dos Trabalhadores - PT
+Municipio: Prefeito - Mesquita/ RJ
+Situacao: Nao eleito
+Moeda Social: moeda social
+Palavras chaves Amplas: 
+
+Nome do Candidato: ALEX SANDRO DA SILVA BASILIO
+Partido: Partido Socialismo E Liberdade - PSOL
+Municipio: Prefeito - Miracema/ RJ
+Situacao: Nao eleito
+Moeda Social: 
+Palavras chaves Amplas: transferencia de renda
+
 Nome do Candidato: ROBERTO DA SILVA LANES FILHO
 Partido: Partido Socialismo E Liberdade - PSOL
 Municipio: Prefeito - Natividade/ RJ
 Situacao: Nao eleito
 Moeda Social: moeda social
-Palavras chaves Amplas: 
+Palavras chaves Amplas: transferencia de renda, distribuicao de renda
+
+Nome do Candidato: DANIELLE BORNIA DE CASTRO
+Partido: Partido Socialista Dos Trabalhadores Unificado - PSTU
+Municipio: Prefeito - Niteroi/ RJ
+Situacao: Nao eleito
+Moeda Social: 
+Palavras chaves Amplas: renda basica
 
 Nome do Candidato: JOAO ALBERTO PEREIRA GOMES
 Partido: Partido Novo - NOVO
 Municipio: Prefeito - Niteroi/ RJ
 Situacao: Inapto
 Moeda Social: moeda social
-Palavras chaves Amplas: 
+Palavras chaves Amplas: transferencia de renda
 
 Nome do Candidato: TALIRIA PETRONE SOARES
 Partido: Partido Socialismo E Liberdade - PSOL
 Municipio: Prefeito - Niteroi/ RJ
 Situacao: Nao eleito
-Moeda Social: moeda social
-Palavras chaves Amplas: 
+Moeda Social: moeda social, banco comunitario
+Palavras chaves Amplas: transferencia de renda
 
 Nome do Candidato: WANDERSON LUIZ CUNHA NOGUEIRA
 Partido: Partido Democratico Trabalhista - PDT
@@ -138,12 +432,33 @@ Situacao: Nao eleito
 Moeda Social: moeda social
 Palavras chaves Amplas: 
 
+Nome do Candidato: JOSE ALEXANDRE ALMEIDA DA SILVA
+Partido: Partido Dos Trabalhadores - PT
+Municipio: Prefeito - Nova Friburgo/ RJ
+Situacao: Nao eleito
+Moeda Social: moeda social
+Palavras chaves Amplas: renda basica
+
 Nome do Candidato: ANTONIO ARAUJO FERREIRA
 Partido: Partido Dos Trabalhadores - PT
 Municipio: Prefeito - Nova Iguacu/ RJ
 Situacao: Nao eleito
 Moeda Social: moeda social
 Palavras chaves Amplas: 
+
+Nome do Candidato: ALINE OTILIA SOARES FERREIRA BENEVENUTO
+Partido: Partido Liberal - PL
+Municipio: Prefeito - Paracambi/ RJ
+Situacao: Nao eleito
+Moeda Social: 
+Palavras chaves Amplas: transferencia de renda
+
+Nome do Candidato: ANDRE LUIZ RAMALHO CECILIANO
+Partido: Partido Dos Trabalhadores - PT
+Municipio: Prefeito - Paracambi/ RJ
+Situacao: ELEITO
+Moeda Social: moeda social
+Palavras chaves Amplas: distribuicao de renda, complementacao de renda
 
 Nome do Candidato: CESAR AUGUSTO GUTO NADER
 Partido: Movimento Democratico Brasileiro - MDB
@@ -166,8 +481,43 @@ Situacao: Nao eleito
 Moeda Social: moeda social
 Palavras chaves Amplas: 
 
+Nome do Candidato: FABIO SPERENDIO DE OLIVEIRA
+Partido: Republicanos - REPUBLICANOS
+Municipio: Prefeito - Queimados/ RJ
+Situacao: Nao eleito
+Moeda Social: moeda social
+Palavras chaves Amplas: 
+
+Nome do Candidato: ARMANDO CUNHA CARNEIRO DA SILVA
+Partido: Partido Liberal - PL
+Municipio: Prefeito - Quissama/ RJ
+Situacao: Nao eleito
+Moeda Social: moeda social
+Palavras chaves Amplas: 
+
+Nome do Candidato: SIMONE FLORES SOARES DE OLIVEIRA BARROS
+Partido: Republicanos - REPUBLICANOS
+Municipio: Prefeito - Quissama/ RJ
+Situacao: Nao eleito
+Moeda Social: 
+Palavras chaves Amplas: complementacao de renda
+
+Nome do Candidato: LEONEL POLICIANO PRIMO
+Partido: Democracia Crista - DC
+Municipio: Prefeito - Resende/ RJ
+Situacao: Nao eleito
+Moeda Social: moeda social
+Palavras chaves Amplas: 
+
 Nome do Candidato: RENAN MARASSI MAGALHAES
 Partido: Republicanos - REPUBLICANOS
+Municipio: Prefeito - Resende/ RJ
+Situacao: Nao eleito
+Moeda Social: moeda social
+Palavras chaves Amplas: 
+
+Nome do Candidato: VALDO DUARTE GOMES
+Partido: Partido Dos Trabalhadores - PT
 Municipio: Prefeito - Resende/ RJ
 Situacao: Nao eleito
 Moeda Social: moeda social
@@ -185,7 +535,14 @@ Partido: Partido Liberal - PL
 Municipio: Prefeito - Rio Bonito/ RJ
 Situacao: Nao eleito
 Moeda Social: moeda social
-Palavras chaves Amplas: 
+Palavras chaves Amplas: transferencia de renda, distribuicao de renda
+
+Nome do Candidato: CARLOS AUGUSTO CARVALHO BALTHAZAR
+Partido: Partido Liberal - PL
+Municipio: Prefeito - Rio Das Ostras/ RJ
+Situacao: ELEITO
+Moeda Social: 
+Palavras chaves Amplas: transferencia de renda
 
 Nome do Candidato: KATIA MARIA DINIZ MACILLO
 Partido: Partido Dos Trabalhadores - PT
@@ -194,12 +551,40 @@ Situacao: Nao eleito
 Moeda Social: moeda social
 Palavras chaves Amplas: 
 
+Nome do Candidato: MAURICIO BRAGA MESQUITA
+Partido: Uniao Brasil - UNIAO
+Municipio: Prefeito - Rio Das Ostras/ RJ
+Situacao: Nao eleito
+Moeda Social: 
+Palavras chaves Amplas: transferencia de renda
+
+Nome do Candidato: EDUARDO DA COSTA PAES
+Partido: Partido Social Democratico - PSD
+Municipio: Prefeito - Rio De Janeiro/ RJ
+Situacao: ELEITO
+Moeda Social: 
+Palavras chaves Amplas: transferencia de renda
+
+Nome do Candidato: MARCELO CID HERACLITO DO PORTO QUEIROZ
+Partido: Progressistas - PP
+Municipio: Prefeito - Rio De Janeiro/ RJ
+Situacao: Nao eleito
+Moeda Social: 
+Palavras chaves Amplas: transferencia de renda
+
 Nome do Candidato: TARCISIO MOTTA DE CARVALHO
 Partido: Partido Socialismo E Liberdade - PSOL
 Municipio: Prefeito - Rio De Janeiro/ RJ
 Situacao: Nao eleito
 Moeda Social: moedas sociais
-Palavras chaves Amplas: renda complementar
+Palavras chaves Amplas: renda complementar, renda basica, transferencia de renda
+
+Nome do Candidato: NILSON JOSE PERDOMO COSTA
+Partido: Solidariedade - SOLIDARIEDADE
+Municipio: Prefeito - Santa Maria Madalena/ RJ
+Situacao: ELEITO
+Moeda Social: 
+Palavras chaves Amplas: transferencia de renda
 
 Nome do Candidato: JAIRO OLIVEIRA AQUINO
 Partido: Solidariedade - SOLIDARIEDADE
@@ -208,25 +593,95 @@ Situacao: Nao eleito
 Moeda Social: moeda social
 Palavras chaves Amplas: 
 
+Nome do Candidato: PEDRO JORGE CHERENE JUNIOR
+Partido: Uniao Brasil - UNIAO
+Municipio: Prefeito - Sao Francisco De Itabapoana/ RJ
+Situacao: Nao eleito
+Moeda Social: 
+Palavras chaves Amplas: transferencia de renda
+
+Nome do Candidato: DIMAS DE PAIVA GADELHA JUNIOR
+Partido: Partido Dos Trabalhadores - PT
+Municipio: Prefeito - Sao Goncalo/ RJ
+Situacao: Nao eleito
+Moeda Social: moeda social
+Palavras chaves Amplas: renda basica, transferencia de renda
+
 Nome do Candidato: JOSEMAR PINHEIRO DE CARVALHO
 Partido: Partido Socialismo E Liberdade - PSOL
 Municipio: Prefeito - Sao Goncalo/ RJ
 Situacao: Nao eleito
 Moeda Social: moedas sociais
-Palavras chaves Amplas: 
+Palavras chaves Amplas: renda basica
+
+Nome do Candidato: REGINALDO DA SILVA AFONSO
+Partido: Partido Socialista Dos Trabalhadores Unificado - PSTU
+Municipio: Prefeito - Sao Goncalo/ RJ
+Situacao: Nao eleito
+Moeda Social: 
+Palavras chaves Amplas: renda basica
+
+Nome do Candidato: KARLA CHAGAS MAIA
+Partido: Uniao Brasil - UNIAO
+Municipio: Prefeito - Sao Joao Da Barra/ RJ
+Situacao: ELEITO
+Moeda Social: 
+Palavras chaves Amplas: transferencia de renda
 
 Nome do Candidato: JULIANA DA SILVA DRUMOND
 Partido: Partido Socialismo E Liberdade - PSOL
 Municipio: Prefeito - Sao Joao De Meriti/ RJ
 Situacao: Nao eleito
 Moeda Social: moedas sociais
+Palavras chaves Amplas: distribuicao de renda
+
+Nome do Candidato: LUIZ MARCOS DE OLIVEIRA MUILER
+Partido: Partido Da Mulher Brasileira - PMB
+Municipio: Prefeito - Sao Joao De Meriti/ RJ
+Situacao: Nao eleito
+Moeda Social: 
+Palavras chaves Amplas: transferencia de renda
+
+Nome do Candidato: GEAN MARCOS PEREIRA DA SILVA
+Partido: Movimento Democratico Brasileiro - MDB
+Municipio: Prefeito - Sao Jose De Uba/ RJ
+Situacao: ELEITO
+Moeda Social: 
+Palavras chaves Amplas: transferencia de renda
+
+Nome do Candidato: JOSE ADILSON GONCALVES PRIORI
+Partido: Avante - AVANTE
+Municipio: Prefeito - Sao Jose Do Vale Do Rio Preto/ RJ
+Situacao: Nao eleito
+Moeda Social: 
+Palavras chaves Amplas: transferencia de renda
+
+Nome do Candidato: MARCELO ANTONIO PINTO DOS SANTOS
+Partido: Partido Renovacao Democratica - PRD
+Municipio: Prefeito - Sao Pedro Da Aldeia/ RJ
+Situacao: Nao eleito
+Moeda Social: 
+Palavras chaves Amplas: renda minima
+
+Nome do Candidato: LUCIMAR PEREIRA VIDAL DA COSTA
+Partido: Partido Liberal - PL
+Municipio: Prefeito - Saquarema/ RJ
+Situacao: ELEITO
+Moeda Social: moeda social
+Palavras chaves Amplas: 
+
+Nome do Candidato: PAULO CESAR MELO DE SA
+Partido: Movimento Democratico Brasileiro - MDB
+Municipio: Prefeito - Saquarema/ RJ
+Situacao: Nao eleito
+Moeda Social: moeda social
 Palavras chaves Amplas: 
 
 Nome do Candidato: ROMULO CARVALHO DE ALMEIDA
 Partido: Partido Novo - NOVO
 Municipio: Prefeito - Saquarema/ RJ
 Situacao: Nao eleito
-Moeda Social: moedas sociais
+Moeda Social: moeda social, moedas sociais
 Palavras chaves Amplas: 
 
 Nome do Candidato: LUIZ EVANDRO MACEDO DE BARROS JUNIOR
@@ -243,19 +698,47 @@ Situacao: Nao eleito
 Moeda Social: moeda social
 Palavras chaves Amplas: 
 
+Nome do Candidato: ANALU ARAUJO DIAS
+Partido: Progressistas - PP
+Municipio: Prefeito - Sumidouro/ RJ
+Situacao: Nao eleito
+Moeda Social: moeda local
+Palavras chaves Amplas: 
+
+Nome do Candidato: MONICA DA SILVA BICUDO
+Partido: Rede Sustentabilidade - REDE
+Municipio: Prefeito - Tangua/ RJ
+Situacao: Nao eleito
+Moeda Social: 
+Palavras chaves Amplas: transferencia de renda
+
+Nome do Candidato: VALBER LUIZ MARCELO DE CARVALHO
+Partido: Progressistas - PP
+Municipio: Prefeito - Tangua/ RJ
+Situacao: Nao eleito
+Moeda Social: 
+Palavras chaves Amplas: transferencia de renda
+
 Nome do Candidato: RILDO GONCALVES NEVES
 Partido: Partido Liberal - PL
 Municipio: Prefeito - Trajano De Moraes/ RJ
 Situacao: ELEITO
 Moeda Social: 
-Palavras chaves Amplas: distribuir renda
+Palavras chaves Amplas: transferencia de renda, complementacao de renda, distribuir renda
+
+Nome do Candidato: JOACIR BARBAGLIO PEREIRA
+Partido: Republicanos - REPUBLICANOS
+Municipio: Prefeito - Tres Rios/ RJ
+Situacao: Nao eleito
+Moeda Social: moeda social
+Palavras chaves Amplas: 
 
 Nome do Candidato: FRANCISCO DE PAULA DOS REIS LIMA
 Partido: Partido Socialismo E Liberdade - PSOL
 Municipio: Prefeito - Valenca/ RJ
 Situacao: Nao eleito
 Moeda Social: moedas sociais
-Palavras chaves Amplas: 
+Palavras chaves Amplas: renda minima, distribuicao de renda
 
 Nome do Candidato: FRANCISCO CARLOS TEIXEIRA BRANDO
 Partido: Solidariedade - SOLIDARIEDADE
