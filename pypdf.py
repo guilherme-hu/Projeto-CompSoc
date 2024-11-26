@@ -12,9 +12,9 @@ from unidecode import unidecode
 
 
 # Lista de frases-chave
-keywords = ["moeda social", "moedas sociais", "bancos comunitários", "banco comunitário", "moeda local", "moedas locais"]
-keywords2 = ["renda complementar", "renda mínima", "renda básica", "renda social",
-            "transferência de renda", "distribuição de renda", "complementação de renda", 
+keywords = ["moeda social", "moedas sociais", "bancos comunitarios", "banco comunitario", "moeda local", "moedas locais"]
+keywords2 = ["renda complementar", "renda minima", "renda basica", "renda social",
+            "transferencia de renda", "distribuicao de renda", "complementacao de renda", 
             "transferir renda", "distribuir renda", "complementar renda"]
 
 # # Perguntar ao usuário se deseja adicionar mais palavras-chave
@@ -168,8 +168,9 @@ try:
                             page = reader.pages[page_num]
                             text += page.extract_text()
 
-                        # Remover acentos do texto extraído
-                        text = unidecode(text)
+                        # Remover acentos, ç e deixar tudo em minúsculo no texto extraído
+                        text = unidecode(text.replace('ç', 'c')).lower()
+                        text = unidecode(text).lower()
 
                         # Verificar se alguma das frases-chave está no texto
                         found_phrases = [phrase for phrase in keywords if phrase in text]
