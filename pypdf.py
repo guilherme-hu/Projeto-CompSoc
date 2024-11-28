@@ -12,10 +12,12 @@ from unidecode import unidecode
 
 
 # Lista de frases-chave
-keywords = ["moeda social", "moedas sociais", "bancos comunitarios", "banco comunitario", "moeda local", "moedas locais"]
-keywords2 = ["renda complementar", "renda minima", "renda basica", "renda social",
-            "transferencia de renda", "distribuicao de renda", "complementacao de renda", 
-            "transferir renda", "distribuir renda", "complementar renda"]
+keywords = ["moeda social", "moedas sociais", "moeda local", "moedas locais",
+            "banco comunitario", "bancos comunitarios", "banco social", "bancos sociais", "banco popular", "bancos populares" ]
+keywords2 = ["renda complementar", "renda minima", "renda basica", "renda social", "economia solidaria", "renda municipal", "renda comunitaria",
+            "transferencia de renda", "distribuicao de renda", "complementacao de renda", "transferir renda", "distribuir renda", "complementar renda",
+            "rendas complementares", "rendas minimas", "rendas basicas", "rendas sociais", "economias solidarias", "rendas municipais", "rendas comunitarias",
+            "transferencias de renda", "distribuicoes de renda", "complementacoes de renda", "transferir rendas", "distribuir rendas", "complementar rendas"]
 
 # # Perguntar ao usuário se deseja adicionar mais palavras-chave
 # add_keywords = input("Deseja adicionar mais alguma palavra-chave? (S/N): ").strip().lower()
