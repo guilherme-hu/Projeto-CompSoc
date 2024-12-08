@@ -12,7 +12,7 @@ from unidecode import unidecode
 
 
 # Lista de frases-chave
-keywords = ["moeda social", "moedas sociais", "moeda local", "moedas locais",
+keywords = ["moeda social", "moedas sociais", "moeda local", "moedas locais", "moeda municipal", "moedas municipais", "moeda comunitaria", "moedas comunitarias",
             "banco comunitario", "bancos comunitarios", "banco social", "bancos sociais", "banco popular", "bancos populares" ]
 keywords2 = ["renda complementar", "renda minima", "renda basica", "renda social", "economia solidaria", "renda municipal", "renda comunitaria",
             "transferencia de renda", "distribuicao de renda", "complementacao de renda", "transferir renda", "distribuir renda", "complementar renda",
@@ -116,14 +116,13 @@ try:
         )
         municipio.click()
 
-        if i == 2:  # Exemplo para selecionar o cargo de prefeito
-            prefeito = WebDriverWait(driver, 5).until(
-                EC.element_to_be_clickable((By.XPATH, "/html/body/dvg-root/main/dvg-canditado-listagem/div/div/div[1]/form/div[1]/div/div[2]/div[2]/div[2]/select/option[2]"))
-            )
-            prefeito.click()
+        prefeito = WebDriverWait(driver, 5).until(
+            EC.element_to_be_clickable((By.XPATH, "/html/body/dvg-root/main/dvg-canditado-listagem/div/div/div[1]/form/div[1]/div/div[2]/div[2]/div[2]/select/option[2]"))
+        )
+        prefeito.click()
         
         pesquisar = WebDriverWait(driver, 5).until(
-            EC.element_to_be_clickable((By.XPATH, "/html/body/dvg-root/main/dvg-canditado-listagem/div/div/div[1]/form/div[1]/div/div[3]/button[1]"))
+            EC.element_to_be_clickable((By.XPATH, '//*[@id="basicInformationSection"]/div[3]/button[1]'))
         )
         pesquisar.click()
 
