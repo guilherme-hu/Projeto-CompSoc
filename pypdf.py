@@ -116,8 +116,9 @@ try:
         )
         municipio.click()
 
+        print(i)
         prefeito = WebDriverWait(driver, 5).until(
-            EC.element_to_be_clickable((By.XPATH, "/html/body/dvg-root/main/dvg-canditado-listagem/div/div/div[1]/form/div[1]/div/div[2]/div[2]/div[2]/select/option[2]"))
+            EC.element_to_be_clickable((By.XPATH, '//*[@id="cargo"]/option[2]'))
         )
         prefeito.click()
         
