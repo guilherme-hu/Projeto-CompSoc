@@ -9,6 +9,7 @@ import shutil
 import PyPDF2
 import pandas as pd
 from unidecode import unidecode
+from selenium.common.exceptions import StaleElementReferenceException
 
 
 # Lista de frases-chave
@@ -25,7 +26,7 @@ keywords2 = ["renda complementar", "renda minima", "renda basica", "renda social
 # while add_keywords == 's':
 #     new_keyword = input("Digite a nova palavra-chave: ").strip()
 #     if new_keyword:
-#         keywords.append(new_keyword)
+#         keywords3.append(new_keyword)
 #     add_keywords = input("Deseja adicionar mais alguma palavra-chave? (S/N): ").strip().lower()
 
 
@@ -109,19 +110,23 @@ try:
 
     # Iterar através dos municípios do RJ
     for i in range(2, 94):  # Ajustar o número de municípios conforme necessário -> 2, 94
-        xpath = f"/html/body/dvg-root/main/dvg-canditado-listagem/div/div/div[1]/form/div[1]/div/div[2]/div[1]/div[2]/select/option[{i}]"
         
         municipio = WebDriverWait(driver, 5).until(
-            EC.element_to_be_clickable((By.XPATH, xpath))
+            EC.element_to_be_clickable((By.XPATH,  f'//*[@id="codigoMunicipio"]/option[{i}]'))
         )
         municipio.click()
 
-        print(i)
-        prefeito = WebDriverWait(driver, 5).until(
+        prefeito = WebDriverWait(driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, '//*[@id="cargo"]/option[2]'))
         )
-        prefeito.click()
-        
+        try:
+            prefeito.click()
+        except StaleElementReferenceException:
+            prefeito = WebDriverWait(driver, 5).until(
+                EC.element_to_be_clickable((By.XPATH, '//*[@id="cargo"]/option[2]'))
+            )
+            prefeito.click()
+
         pesquisar = WebDriverWait(driver, 5).until(
             EC.element_to_be_clickable((By.XPATH, '//*[@id="basicInformationSection"]/div[3]/button[1]'))
         )
@@ -233,3 +238,5 @@ finally:
                 txt_file.write(f"Moeda Social: {unidecode(result['Moeda Social'])}\n")
                 txt_file.write(f"Palavras chaves Amplas: {unidecode(result['Palavras chaves Amplas'])}\n")
                 txt_file.write("\n") 
+    
+    print("Resultados salvos com sucesso!")
