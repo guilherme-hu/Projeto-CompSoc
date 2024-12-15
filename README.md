@@ -1,6 +1,8 @@
 # Projeto Final do Trio 1 de CompSoc
 MVP para Projeto Final da disciplina Computador e Sociedade, acerca do desenvolvimento de um software que realiza a automação da busca de palavras-chaves nas propostas de candidaturas de candidatos a prefeitos no estado do Rio De Janeiro.]
+
 AVISO 1: O código disponível nesse repositório funciona apenas para o Sistema Operacional WINDOWS. Abaixo, está disponível o guia rápido para uso do software desenvolvido, explicado para os três principais Sistemas Operacionais, mas é importante notar que apenas o uso no Windows funcionará.
+
 AVISO 2: O código desenvolvido se baseia nas estruturas do site do TSE. Caso esse site sofra atualizações, o código não funcionará do jeito esperado, por isso, é necessário uma equipe de manutenção do código. Última versão verificada do código que funciona no site: 15/12/2024
 
 ## Guia de Instalação
